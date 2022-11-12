@@ -17,10 +17,12 @@
                 <Grid MinimumHeightRequest="40">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.2*"/>
-                        <ColumnDefinition Width="0.8*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.6*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Text="{Binding Converter={StaticResource RowNumberConverter}, ConverterParameter='000'}"/>
-                    <Label Grid.Column="1" Text="{Binding Name}"/>
+                    <Label Grid.Column="1" Text="{local:RowNumber Item={Binding}, ItemsSource={Binding Source={Reference PersonCollectionView}, Path=ItemsSource}, Format='000'}"/>
+                    <Label Grid.Column="2" Text="{Binding Name}"/>
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>

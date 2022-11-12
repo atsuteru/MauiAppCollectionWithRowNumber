@@ -22,7 +22,11 @@ namespace MauiAppCollectionWithRowNumber
 
         private string ToRowNumber(object rowData, IEnumerable rows, string format)
         {
-            return (rows.Cast<object>().TakeWhile(x => !ReferenceEquals(x, rowData)).Count() + 1).ToString(format);
+            if (rows == null || rowData == null)
+            {
+                return string.Empty;
+            }
+            return (rows.Cast<object>().TakeWhile(x => !ReferenceEquals(x, rowData)).Count() + 1).ToString(format ?? "#");
         }
     }
 }
